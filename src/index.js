@@ -19,9 +19,9 @@ ReactDOM.render(
     
     <Switch>
     <Route exact path="/"  component={App}/>
-    <Route path = "/:id/details">
-    <Details />
-    </Route>
+    <Route path = "/:id/details" component={Details}/>
+
+    
     <Route render={() => <h1> Page not  found</h1>}/>
     </Switch>
     </div>

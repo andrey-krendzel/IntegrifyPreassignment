@@ -47,6 +47,7 @@ function Details() {
   
 
   React.useEffect(() => {
+    
     fetch("https://jsonplaceholder.typicode.com/users/" + id)
       .then(handleErrors)
       .then((response) => response.json())
