@@ -2,11 +2,31 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import Details from './Details';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter as Router, 
+  Switch, Route, Link} from "react-router-dom";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+     <Router>
+    <div>
+    <nav>
+
+              <Link to="/">&nbsp; Go home</Link>
+
+        </nav>
+    
+    <Switch>
+    <Route exact path="/"  component={App}/>
+    <Route path = "/:id/details">
+    <Details />
+    </Route>
+    <Route render={() => <h1> Page not  found</h1>}/>
+    </Switch>
+    </div>
+    </Router>
+
   </React.StrictMode>,
   document.getElementById('root')
 );

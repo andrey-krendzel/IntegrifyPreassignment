@@ -3,8 +3,8 @@ import './App.css';
 import './bootstrap.min.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { useParams } from "react-router-dom";
 import { useState } from "react";
-import { Link} from "react-router-dom";
 
 function Card(props){
 
@@ -17,19 +17,19 @@ function Card(props){
     <h5 className="card-title">{props.name}</h5>
     <p className="card-text"><i>@{props.tag}</i></p>
     <p className="card-text"><a href={props.website}>http://{props.website}</a></p>
-    <a href={"/" + props.id + "/details"} className="btn btn-primary">More details</a>
-    
+    <a href="#" className="btn btn-primary">More details</a>
   </div>
 </div>
   )
 }
 
 
-function App() {
-  const [employees, setEmployees] = useState([]);
+function Details() {
+  const [employee, setEmployee] = useState([]);
   const [update, setUpdate] = useState();
+  const { id } = useParams();
 
-
+  console.log(id)
 
       function handleErrors(response) {
         if (!response.ok) {
@@ -40,12 +40,12 @@ function App() {
   
 
   React.useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/users")
+    fetch("https://jsonplaceholder.typicode.com/users/" + {id})
       .then(handleErrors)
       .then((response) => response.json())
       .then((responseData) => {
         console.log(responseData);
-        setEmployees(responseData);
+        setEmployee(responseData);
 
       })
       .catch((error) => console.log(error));
@@ -53,19 +53,19 @@ function App() {
 
   return (
 <div className="container">
-<div class="card-columns">
 
 
 
 
-{employees
-          .map((employee) =>  
-       <Card key={employee.id} name={employee.name} tag={employee.username} website={employee.website} id={employee.id} />
-          )}
+<div className="card">
+  
+  <div className="card-body">
+    <p className="card-text">Text</p>
 
+    <a href="/" className="btn btn-primary">Go back</a>
+  </div>
 </div>
 
-<br />
 
 
 
@@ -76,4 +76,4 @@ function App() {
   );
 }
 
-export default App;
+export default Details;
