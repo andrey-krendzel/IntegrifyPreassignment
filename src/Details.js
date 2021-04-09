@@ -6,20 +6,27 @@ import ReactDOM from 'react-dom';
 import { useParams } from "react-router-dom";
 import { useState } from "react";
 
-function Card(props){
-
+function DetailsCard(props){
   return(
-<div className="card">
+<div className="card card-size">
   
   <div className="card-body">
-  <div className="circle">{props.name.charAt(0)}</div>
-    <br/>
-    <h5 className="card-title">{props.name}</h5>
-    <p className="card-text"><i>@{props.tag}</i></p>
-    <p className="card-text"><a href={props.website}>http://{props.website}</a></p>
-    <a href="#" className="btn btn-primary">More details</a>
+    <p className="card-text">- name: {props.employee.name}</p>
+    <p className="card-text">- username: {props.employee.username}</p>
+    <p className="card-text">- email: {props.employee.username}</p>
+    
+
+    <Button url="/" style="btn btn-primary" text="Go back" />
   </div>
 </div>
+  )
+}
+
+
+function Button(props){
+
+  return(
+<a href={props.url} className={props.style}>{props.text}</a>
   )
 }
 
@@ -27,9 +34,9 @@ function Card(props){
 function Details() {
   const [employee, setEmployee] = useState([]);
   const [update, setUpdate] = useState();
+  //useParams
   const { id } = useParams();
 
-  console.log(id)
 
       function handleErrors(response) {
         if (!response.ok) {
@@ -40,7 +47,7 @@ function Details() {
   
 
   React.useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/users/" + {id})
+    fetch("https://jsonplaceholder.typicode.com/users/" + id)
       .then(handleErrors)
       .then((response) => response.json())
       .then((responseData) => {
@@ -56,15 +63,8 @@ function Details() {
 
 
 
+<DetailsCard employee={employee} />
 
-<div className="card">
-  
-  <div className="card-body">
-    <p className="card-text">Text</p>
-
-    <a href="/" className="btn btn-primary">Go back</a>
-  </div>
-</div>
 
 
 

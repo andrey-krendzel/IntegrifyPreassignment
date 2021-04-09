@@ -6,6 +6,8 @@ import ReactDOM from 'react-dom';
 import { useState } from "react";
 import { Link} from "react-router-dom";
 
+
+//Card component
 function Card(props){
 
   return(
@@ -17,15 +19,23 @@ function Card(props){
     <h5 className="card-title">{props.name}</h5>
     <p className="card-text"><i>@{props.tag}</i></p>
     <p className="card-text"><a href={props.website}>http://{props.website}</a></p>
-    <a href={"/" + props.id + "/details"} className="btn btn-primary">More details</a>
-    
+    <Button url={"/" + props.id + "/details"} style="btn btn-primary" text="More details" />
   </div>
 </div>
   )
 }
 
+//Button component
+function Button(props){
+
+  return(
+<a href={props.url} className={props.style}>{props.text}</a>
+  )
+}
+
 
 function App() {
+  //useState
   const [employees, setEmployees] = useState([]);
   const [update, setUpdate] = useState();
 
@@ -38,7 +48,7 @@ function App() {
         return response;
       }
   
-
+//useEffect
   React.useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/users")
       .then(handleErrors)
@@ -54,21 +64,12 @@ function App() {
   return (
 <div className="container">
 <div class="card-columns">
-
-
-
-
 {employees
           .map((employee) =>  
        <Card key={employee.id} name={employee.name} tag={employee.username} website={employee.website} id={employee.id} />
           )}
 
 </div>
-
-<br />
-
-
-
 
 </div>
 
