@@ -9,7 +9,7 @@ import { Link} from "react-router-dom";
 
 //Card component
 function Card(props){
-
+  
   return(
 <div className="card">
   
@@ -18,7 +18,7 @@ function Card(props){
     <br/>
     <h5 className="card-title">{props.name}</h5>
     <p className="card-text"><i>@{props.tag}</i></p>
-    <p className="card-text"><a href={props.website}>http://{props.website}</a></p>
+    <p className="card-text"><a href={"http://" + props.website}>http://{props.website}</a></p>
     <Button url={"/" + props.id + "/details"} style="btn btn-primary" text="More details" />
   </div>
 </div>

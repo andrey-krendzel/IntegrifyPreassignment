@@ -7,15 +7,21 @@ import { useParams } from "react-router-dom";
 import { useState } from "react";
 
 function DetailsCard(props){
+ console.log(props.employee.company)
   return(
 <div className="card card-size">
   
   <div className="card-body">
     <p className="card-text">- name: {props.employee.name}</p>
     <p className="card-text">- username: {props.employee.username}</p>
-    <p className="card-text">- email: {props.employee.username}</p>
-    
-
+    <p className="card-text">- email: {props.employee.email}</p>
+    <p className="card-text">- phone: {props.employee.phone}</p>
+    <p className="card-text">- company: {props.company.name} </p>
+    <p className="card-text">- website: {props.employee.website} </p>
+    <p className="card-text">- address: 
+    <ul>
+      <li>street: {props.employee.name}</li>
+    </ul> </p>
     <Button url="/" style="btn btn-primary" text="Go back" />
   </div>
 </div>
@@ -64,7 +70,7 @@ function Details() {
 
 
 
-<DetailsCard employee={employee} />
+<DetailsCard employee={employee} company={employee.company} />
 
 
 
