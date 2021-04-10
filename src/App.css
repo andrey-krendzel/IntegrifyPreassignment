@@ -28,11 +28,25 @@
   color: #61dafb;
 }
 
+.circle {
+  background: lightgray;
+  color: #fff;
+  padding: 5px 20px;
+  border-radius: 50%;
+  font-size: 35px;
+  margin: auto;
+  width: 65px;
+}
+
 
 .card-size {
   width: 40rem;
   margin: auto;
   font-weight: bold;
+ 
+}
+
+.containter-left{
   text-align:left !important;
 }
 

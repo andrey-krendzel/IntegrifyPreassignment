@@ -5266,6 +5266,14 @@ input[type=submit].btn-block {
     text-align:center;
 }
 
+.card-body-left {
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1.25rem;
+    text-align:left;
+}
+
 .card-title {
     margin-bottom: .75rem
 }
